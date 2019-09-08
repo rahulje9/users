@@ -1,5 +1,7 @@
 import * as types from '../constants/constants'
 import axios from 'react-native-axios'
+import AsyncStorage from '@react-native-community/async-storage'
+
 
 const initialState = {
     loginData: '',
@@ -16,6 +18,7 @@ export default function loginReducer(state = initialState, action) {
                 }
             });
             window.axios.defaults.headers.common['Authorization'] = action.payload.token;
+            AsyncStorage.setItem('isLoggedIn', JSON.stringify(true))
             return {
                 ...state,
                 loginSuccess: true,

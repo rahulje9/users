@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-class HomePage extends Component {
+class Colors extends Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -11,4 +11,4 @@ class HomePage extends Component {
     }
 }
 
-export default HomePage;
+export default Colors;

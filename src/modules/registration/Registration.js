@@ -25,10 +25,6 @@ class Registration extends Component {
         };
     }
 
-    componentDidMount() {
-        // console.log("this.props.actions", this.props.actions)
-    }
-
     onSignup = () => {
         this.setState({ regErrors: '' })
         const { emailId, password } = this.state
@@ -40,12 +36,13 @@ class Registration extends Component {
             this.setState({ isLoading: true })
             this.props.actions.doRegistration(params).then(() => {
 
-                this.props.registrationFLag &&
+                if (this.props.registrationFLag) {
                     this.setState({
                         isLoading: false,
                         regErrors: ''
                     })
-                //navigation part
+                    this.props.navigation.navigate('HomePage')
+                }
                 if (this.props.regErrorFlag) {
                     this.setState({
                         isLoading: false,
@@ -53,10 +50,7 @@ class Registration extends Component {
                     })
                 }
             }
-
-                // registrationFLag
             )
-
         }
     }
 

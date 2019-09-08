@@ -26,11 +26,6 @@ class Login extends Component {
         };
     }
 
-    componentDidMount() {
-        // console.log("this.props.actions", this.props.actions)
-    }
-
-
     onLogin = () => {
         const { emailId, password } = this.state
         if (this.isValid()) {
@@ -40,8 +35,10 @@ class Login extends Component {
             }
             this.setState({ isLoading: true })
             this.props.actions.onLogin().then(() => {
-                this.props.loginFlag &&
+                if (this.props.loginFlag) {
                     this.setState({ isLoading: false, loginErrors: '' })
+                    this.props.navigation.navigate('HomePage')
+                }
 
                 this.props.loginErrorFlag &&
                     this.setState({
