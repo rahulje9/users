@@ -20,7 +20,8 @@ export default function registrationReducer(state = initialState, action) {
             return {
                 ...state,
                 regFlag: true,
-                registrationData: action.payload
+                registrationData: action.payload,
+                regError: false
             }
         }
         case types.DO_REGISTRATION_FAILED: {

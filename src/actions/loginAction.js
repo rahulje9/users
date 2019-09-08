@@ -2,11 +2,8 @@ import * as types from '../constants/constants'
 import { Login } from '../services/authentication'
 
 
-export const onLogin = () => {
-    let params = {
-        "email": "george.bluth@reqres.in",
-        "password": "pistol"
-    }
+export const onLogin = (params) => {
+    console.log('params', params)
     return (dispatch) => {
         return Login.loginAPI(params).then(response => {
             console.log({ response })
@@ -31,5 +28,13 @@ export const onLoginFailed = (err) => {
     return {
         type: types.ON_LOGIN_FAILED,
         payload: err
+    }
+}
+
+export const logOut = () => {
+    return (dispatch) => {
+        dispatch({
+            type: types.LOGOUT
+        })
     }
 }

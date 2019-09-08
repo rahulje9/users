@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, KeyboardAvoidingView, View, Text, TouchableOpacity } from 'react-native';
+import { ScrollView, KeyboardAvoidingView, View, Text, TouchableOpacity, StatusBar } from 'react-native';
 import styles from './styles'
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from '../../helpers/Responsive'
 
@@ -20,6 +20,8 @@ class LandingPage extends Component {
     render() {
         return (
             <ScrollView style={styles.flexOne}>
+                <StatusBar backgroundColor='#fff' barStyle='dark-content' />
+
                 <KeyboardAvoidingView style={styles.flexOne}
                     behavior='padding'
                     enabled

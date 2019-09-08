@@ -23,13 +23,10 @@ class Users extends Component {
         this.setState({ isLoading: true })
         this.props.actions.getUsers().then(() => {
             if (!this.props.flag) {
-
                 this.setState({
                     isLoading: false,
-                    // refreshing: false,
                     data: this.props.data
                 })
-                console.log('data', this.props.data)
             }
         })
     }
@@ -62,14 +59,13 @@ class Users extends Component {
                 style={styles.mainConainter}>
                 <Loader showLoader={this.state.isLoading} />
                 {
-                    this.state.data !== undefined ?
+                    this.state.data !== '' ?
                         this.state.data.data ?
                             this.state.data.data.length > 0 ?
                                 <FlatList
 
                                     data={this.state.data.data}
                                     renderItem={this.renderData}
-                                    // showsVerticalScrollIndicator={false}
                                     keyExtractor={(item, index) => index.toString()}
                                 />
                                 : null

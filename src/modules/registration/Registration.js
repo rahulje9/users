@@ -5,7 +5,8 @@ import {
     KeyboardAvoidingView,
     TextInput,
     TouchableOpacity,
-    ScrollView
+    ScrollView,
+    StatusBar
 } from 'react-native';
 import { ActionCreators } from '../../actions/index'
 import { bindActionCreators } from "redux";
@@ -41,7 +42,7 @@ class Registration extends Component {
                         isLoading: false,
                         regErrors: ''
                     })
-                    this.props.navigation.navigate('HomePage')
+                    this.props.navigation.navigate('App')
                 }
                 if (this.props.regErrorFlag) {
                     this.setState({
@@ -89,6 +90,7 @@ class Registration extends Component {
     render() {
         return (
             <ScrollView style={styles.container}>
+                <StatusBar backgroundColor='#fff' barStyle='dark-content' />
                 <KeyboardAvoidingView
                     behavior="padding"
                     enabled

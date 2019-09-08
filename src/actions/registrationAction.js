@@ -2,12 +2,9 @@
 import { Registration } from '../services/authentication'
 import * as types from '../constants/constants'
 
-export const doRegistration = () => {
+export const doRegistration = (params) => {
+
     return (dispatch) => {
-        let params = {
-            "email": "george.bluth@reqres.in",
-            "password": "pistol"
-        }
         return Registration.doRegistrationAPI(params)
             .then(response => {
                 console.log({ response })

@@ -1,5 +1,5 @@
 import React from 'react';
-import { createAppContainer, createSwitchNavigator, } from 'react-navigation'
+import { createAppContainer, createSwitchNavigator } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
 import Registration from '../modules/registration/Registration'
 import LandingPage from '../modules/landingpage/LandingPage'
@@ -10,12 +10,11 @@ import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import Users from '../modules/homePage/users/Users'
 import Colors from '../modules/homePage/colors/Colors'
 import { responsiveFontSize, responsiveHeight, responsiveWidth } from '../helpers/Responsive'
-
-// =
-
+import Settings from '../modules/homePage/settings/Settings'
 const TabBar = createMaterialTopTabNavigator({
     Users: Users,
-    Colors: Colors
+    Colors: Colors,
+    Settings: Settings
 }, {
     lazy: true,
     initialRouteName: 'Users',
@@ -37,7 +36,7 @@ const TabBar = createMaterialTopTabNavigator({
             backgroundColor: '#538AFF',
             width: responsiveWidth(25),
             height: responsiveWidth(1.5),
-            marginLeft: responsiveWidth(12.5),
+            marginLeft: responsiveWidth(4.5),
             alignContent: 'center',
             borderRadius: responsiveWidth(5)
         },
@@ -60,9 +59,7 @@ const AuthStack = createStackNavigator({
 )
 
 const AppStack = createStackNavigator({
-    TabBar: TabBar
-
-    // HomePage: HomePage
+    TabBar: TabBar,
 },
     {
         headerMode: 'none',

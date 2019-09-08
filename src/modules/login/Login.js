@@ -6,7 +6,8 @@ import {
     TextInput,
     TouchableOpacity,
     ScrollView,
-    BackHandler
+    BackHandler,
+    StatusBar
 } from 'react-native';
 import { ActionCreators } from '../../actions/index'
 import { bindActionCreators } from "redux";
@@ -34,10 +35,10 @@ class Login extends Component {
                 'password': password
             }
             this.setState({ isLoading: true })
-            this.props.actions.onLogin().then(() => {
+            this.props.actions.onLogin(params).then(() => {
                 if (this.props.loginFlag) {
                     this.setState({ isLoading: false, loginErrors: '' })
-                    this.props.navigation.navigate('HomePage')
+                    this.props.navigation.navigate('App')
                 }
 
                 this.props.loginErrorFlag &&
@@ -87,6 +88,8 @@ class Login extends Component {
     render() {
         return (
             <ScrollView style={styles.container}>
+                <StatusBar backgroundColor='#fff' barStyle='dark-content' />
+
                 <KeyboardAvoidingView
                     behavior="padding"
                     enabled

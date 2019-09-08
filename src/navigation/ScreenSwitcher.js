@@ -16,7 +16,6 @@ class ScreenSwitcher extends Component {
     }
     checkLogin = async () => {
         let isLoggedIn = await AsyncStorage.getItem('isLoggedIn')
-        console.log({ isLoggedIn })
         isLoggedIn ?
             this.props.navigation.navigate('App')
             :

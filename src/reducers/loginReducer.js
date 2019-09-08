@@ -33,6 +33,15 @@ export default function loginReducer(state = initialState, action) {
                 loginError: true
             }
         }
+        case types.LOGOUT: {
+            AsyncStorage.removeItem('isLoggedIn')
+            return {
+                ...state,
+                loginData: '',
+                loginSuccess: false,
+                loginError: false
+            }
+        }
         default:
             return state
     }
