@@ -12,6 +12,7 @@ import { bindActionCreators } from "redux";
 import { connect } from 'react-redux'
 import styles from './styles'
 import Loader from '../../components/CustomLoader/Loader'
+import BackButton from '../../components/BackButton/BackButton'
 class Registration extends Component {
     constructor(props) {
         super(props);
@@ -19,7 +20,8 @@ class Registration extends Component {
             emailId: '',
             password: '',
             errors: '',
-            isLoading: false
+            isLoading: false,
+            regErrors: ''
         };
     }
 
@@ -28,6 +30,7 @@ class Registration extends Component {
     }
 
     onSignup = () => {
+        this.setState({ regErrors: '' })
         const { emailId, password } = this.state
         if (this.isValid()) {
             let params = {
@@ -38,8 +41,17 @@ class Registration extends Component {
             this.props.actions.doRegistration(params).then(() => {
 
                 this.props.registrationFLag &&
-                    this.setState({ isLoading: false })
+                    this.setState({
+                        isLoading: false,
+                        regErrors: ''
+                    })
                 //navigation part
+                if (this.props.regErrorFlag) {
+                    this.setState({
+                        isLoading: false,
+                        regErrors: 'Please try again later'
+                    })
+                }
             }
 
                 // registrationFLag
@@ -76,6 +88,10 @@ class Registration extends Component {
         this.setState({ errors: errors })
         return valid
     }
+
+    goBackFunction = () => {
+        this.props.navigation.goBack();
+    }
     render() {
         return (
             <ScrollView style={styles.container}>
@@ -84,6 +100,9 @@ class Registration extends Component {
                     enabled
                     style={styles.container}>
                     <Loader showLoader={this.state.isLoading} />
+                    <BackButton
+                        goBack={this.goBackFunction}
+                    />
                     <View style={styles.container}>
                         <TextInput
                             placeholder='Email'
@@ -102,9 +121,19 @@ class Registration extends Component {
                             onChangeText={(password) => { this.setState({ password }) }}
                             onSubmitEditing={this.onSignup}
                         />
-                        <Text style={styles.errorText}>{this.state.errors.password ? this.state.errors.password : null}</Text>
+                        {
+                            this.state.errors.password ?
+                                <Text style={styles.errorText}>{this.state.errors.password ? this.state.errors.password : null}</Text>
+                                : null
+                        }
+                        {
+                            this.state.regErrors ?
+                                <Text style={styles.errorText}>{this.state.regErrors ? this.state.regErrors : null}</Text>
+                                : null
+                        }
 
                         <TouchableOpacity
+                            activeOpacity={0.5}
                             onPress={this.onSignup}
                             style={(this.state.errors.email || this.state.errors.password) ? [styles.registerBtn, styles.errorBtnColor] : styles.registerBtn}>
                             <Text style={styles.btnText}>Register</Text>
@@ -120,6 +149,7 @@ const mapStateToProps = (state) => {
     return {
         registrationFLag: state.RegReducer.regFlag,
         registrationData: state.RegReducer.registrationData,
+        regErrorFlag: state.RegReducer.regError
     }
 
 }

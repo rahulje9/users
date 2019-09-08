@@ -10,12 +10,12 @@ export const doRegistration = () => {
         }
         return Registration.doRegistrationAPI(params)
             .then(response => {
-                console.log({ response })
+                // console.log({ response })
                 if (response.status === 200) {
                     dispatch(doRegistrationSuccess(response.data))
                 }
             }).catch(err => {
-                console.log(err)
+                // console.log(err)
                 dispatch(doRegistrationFailed(err))
             })
     }

@@ -1,13 +1,20 @@
 import * as types from "../constants/constants";
-
+import axios from 'react-native-axios'
 const initialState = {
     regFlag: false,
-    registrationData: ''
+    registrationData: '',
+    regError: false
 }
 
 export default function registrationReducer(state = initialState, action) {
     switch (action.type) {
         case types.DO_REGISTRATION_SUCCESSFULL: {
+            window.axios = axios.create({
+                headers: {
+                    'Authorization': action.payload.token
+                }
+            });
+            window.axios.defaults.headers.common['Authorization'] = action.payload.token;
             return {
                 ...state,
                 regFlag: true,
@@ -18,7 +25,8 @@ export default function registrationReducer(state = initialState, action) {
             return {
                 ...state,
                 regFlag: false,
-                registrationData: ''
+                registrationData: '',
+                regError: true
             }
         }
         default:

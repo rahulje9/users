@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux'
 import RegReducer from './registrationReducer'
+import loginReducer from './loginReducer'
 
 const AppReducer = combineReducers({
-    RegReducer
+    RegReducer,
+    loginReducer
 })
 
 export default AppReducer
