@@ -24,11 +24,11 @@ const styles = StyleSheet.create({
         borderRadius: responsiveWidth(2)
     },
     nameStyle: {
-        color: '#7b9fff',
-        fontSize: responsiveFontSize(3.5)
+        color: '#538AFF',
+        fontSize: responsiveFontSize(3.4)
     },
     emailStyle: {
-        fontSize: responsiveFontSize(2.5)
+        fontSize: responsiveFontSize(2.2)
     },
     noDataView: {
         flex: 1,
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     },
     noDataText: {
         fontSize: responsiveFontSize(3),
-        color: '#7b9fff'
+        color: '#538AFF'
     }
 })
 

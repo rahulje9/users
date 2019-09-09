@@ -3,7 +3,7 @@ import { responsiveFontSize, responsiveHeight, responsiveWidth } from '../../hel
 const styles = StyleSheet.create({
     flexOne: { flex: 1 },
     registerBtn: {
-        backgroundColor: '#7b9fff',
+        backgroundColor: '#538AFF',
         height: responsiveHeight(8),
         marginHorizontal: responsiveWidth(10),
         borderRadius: responsiveWidth(3),
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     signInBtn: {
         backgroundColor: '#fff',
         borderWidth: 1,
-        borderColor: '#7b9fff',
+        borderColor: '#538AFF',
         height: responsiveHeight(8),
         marginHorizontal: responsiveWidth(10),
         borderRadius: responsiveWidth(3),
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     signInBtnText: {
-        color: '#7b9fff',
+        color: '#538AFF',
         fontSize: responsiveFontSize(2.5)
     },
 })

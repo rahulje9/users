@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     },
     noDataText: {
         fontSize: responsiveFontSize(3),
-        color: '#7b9fff'
+        color: '#538AFF'
     },
     colorView: {
         marginHorizontal: responsiveWidth(3),

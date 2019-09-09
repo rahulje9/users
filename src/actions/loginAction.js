@@ -3,15 +3,18 @@ import { Login } from '../services/authentication'
 
 
 export const onLogin = (params) => {
-    console.log('params', params)
     return (dispatch) => {
         return Login.loginAPI(params).then(response => {
-            console.log({ response })
+            // console.log({ response })
             if (response.status === 200) {
                 dispatch(onLoginSuccess(response.data))
             }
+            if (response.status === 400) {
+                console.log({ response })
+            }
 
         }).catch(err => {
+            // console.log('log error', err)
             dispatch(onLoginFailed(err))
         })
     }

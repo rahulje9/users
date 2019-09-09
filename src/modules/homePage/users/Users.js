@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { ActionCreators } from '../../../actions/index'
 import { bindActionCreators } from 'redux'
-import { View, ScrollView, Text, Image, RefreshControl, FlatList } from 'react-native';
+import { View, ScrollView, Text, Image, RefreshControl, FlatList, BackHandler, Alert, StatusBar } from 'react-native';
 import styles from './userStyles'
 import Loader from '../../../components/CustomLoader/Loader'
 
@@ -17,8 +17,42 @@ class Users extends Component {
     }
     componentDidMount() {
         this.fetchData()
+        this.backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
+            // this.handleBackPress()
+            Alert.alert(
+                'Exit',
+                'Are you sure you want to exit?',
+                [
+                    {
+                        text: 'Yes',
+                        onPress: () => {
+                            // this.exitApp()
+                            BackHandler.exitApp()
+                        }
+                    },
+                    {
+                        text: 'cancel',
+                        style: 'cancel'
+                    }
+                ]
+            )
+            return true;
+        })
 
     }
+
+    // handleBackPress = () => {
+
+    // }
+
+    exitApp = () => {
+        BackHandler.exitApp()
+    }
+
+    componentWillUnmount() {
+        this.backHandler.remove()
+    }
+
     fetchData = () => {
         this.setState({ isLoading: true })
         this.props.actions.getUsers().then(() => {
@@ -57,6 +91,8 @@ class Users extends Component {
                     />
                 }
                 style={styles.mainConainter}>
+                <StatusBar backgroundColor='#fff' barStyle='dark-content' />
+
                 <Loader showLoader={this.state.isLoading} />
                 {
                     this.state.data !== '' ?

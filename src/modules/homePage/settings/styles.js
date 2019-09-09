@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         elevation: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#7b9fff',
+        backgroundColor: '#538AFF',
         borderRadius: responsiveWidth(3),
         marginHorizontal: responsiveWidth(10),
         height: responsiveHeight(7)

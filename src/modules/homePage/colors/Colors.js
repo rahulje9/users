@@ -33,7 +33,6 @@ class Colors extends Component {
         })
     }
     renderColors = ({ item }) => {
-        console.log({ item })
         let color = item.color
         return (
             <View style={[styles.colorView, { backgroundColor: color }]} >
