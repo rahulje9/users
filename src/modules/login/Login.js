@@ -44,7 +44,7 @@ class Login extends Component {
                 this.props.loginErrorFlag &&
                     this.setState({
                         isLoading: false,
-                        loginErrors: 'Please try again Later'
+                        loginErrors: 'Failed to login'
                     })
 
             })

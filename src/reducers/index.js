@@ -15,7 +15,7 @@ const AppReducer = combineReducers({
 const rootReducer = (state, action) => {
     if (action.type === types.LOGOUT) {
         state = undefined;
-        window.axios.defaults.headers.common['Authorization'] = ''
+        // window.axios.defaults.headers.common['Authorization'] = ''
     }
     return AppReducer(state, action)
 }

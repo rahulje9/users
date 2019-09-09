@@ -47,7 +47,7 @@ class Registration extends Component {
                 if (this.props.regErrorFlag) {
                     this.setState({
                         isLoading: false,
-                        regErrors: 'Please try again later'
+                        regErrors: 'Failed to sign up'
                     })
                 }
             }
